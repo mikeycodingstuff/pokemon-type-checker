@@ -43,6 +43,7 @@ class PokemonTypeChecker extends Component
 
         if (!array_key_exists($this->attackingType, $typeEffectiveness) || !array_key_exists($this->defendingType, $typeEffectiveness)) {
             $this->result = 'Invalid types.';
+
             return;
         }
 

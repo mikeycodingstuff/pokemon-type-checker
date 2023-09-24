@@ -14,6 +14,7 @@ class TypeEffectivenessSeeder extends Seeder
     public function run(): void
     {
         $types = Type::all();
+
         $types->map(function ($attackingType) {
             $response = Http::get("https://pokeapi.co/api/v2/type/{$attackingType->id}");
 

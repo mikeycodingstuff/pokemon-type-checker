@@ -2,19 +2,19 @@
     <div class='p-4 bg-indigo-700'>
         <h1>Pokémon Type Checker</h1>
         <div class='my-4 p-2 bg-indigo-400 text-slate-900'>
-            <label for="attackingType">Attacking Type:</label>
+            <label for='attackingType'>Attacking Type:</label>
             <input
                 wire:model='attackingType'
-                type="text"
-                id="attackingType"
+                type='text'
+                id='attackingType'
             >
         </div>
         <div class='my-4 p-2 bg-indigo-400 text-slate-900'>
-            <label for="defendingType">Defending Type:</label>
+            <label for='defendingType'>Defending Type:</label>
             <input
                 wire:model='defendingType'
-                type="text"
-                id="defendingType"
+                type='text'
+                id='defendingType'
             >
         </div>
         <button

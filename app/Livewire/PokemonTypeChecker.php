@@ -8,11 +8,21 @@ use Livewire\Component;
 
 class PokemonTypeChecker extends Component
 {
-    public string $attackingType = '';
+    public $types;
 
-    public string $defendingType = '';
+    public string $attackingType;
+
+    public string $defendingType;
 
     public string $result;
+
+    public function mount()
+    {
+        $this->types = Type::all();
+
+        $this->attackingType = $this->types->first()->name;
+        $this->defendingType = $this->types->first()->name;
+    }
 
     public function checkTypeEffectiveness()
     {

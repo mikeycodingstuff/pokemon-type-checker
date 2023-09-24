@@ -2,61 +2,37 @@
 
 namespace App\Livewire;
 
+use App\Models\Type;
+use App\Models\TypeEffectiveness;
 use Livewire\Component;
 
 class PokemonTypeChecker extends Component
 {
-    public string $attackingType;
+    public string $attackingType = '';
 
-    public string $defendingType;
+    public string $defendingType = '';
 
     public string $result;
 
     public function checkTypeEffectiveness()
     {
-        $typeEffectiveness = [
-            'normal' => [
-                'normal' => 1,
-                'fire' => 1,
-                'water' => 1,
-                'grass' => 1,
-            ],
-            'fire' => [
-                'normal' => 1,
-                'fire' => 0.5,
-                'water' => 0.5,
-                'grass' => 2,
-            ],
-            'water' => [
-                'normal' => 1,
-                'fire' => 2,
-                'water' => 0.5,
-                'grass' => 0.5,
-            ],
-            'grass' => [
-                'normal' => 1,
-                'fire' => 0.5,
-                'water' => 2,
-                'grass' => 0.5,
-            ],
-        ];
+        $attackingTypeModel = Type::where('name', $this->attackingType)->first();
+        $defendingTypeModel = Type::where('name', $this->defendingType)->first();
 
-        if (!array_key_exists($this->attackingType, $typeEffectiveness) || !array_key_exists($this->defendingType, $typeEffectiveness)) {
-            $this->result = 'Invalid types.';
+        if (!$attackingTypeModel || !$defendingTypeModel) {
+            $this->result = 'Invalid types';
 
             return;
         }
 
-        $effeciveness = $typeEffectiveness[$this->attackingType][$this->defendingType];
+        $typeEffectiveness = TypeEffectiveness::where('attacking_type_id', $attackingTypeModel->id)
+            ->where('defending_type_id', $defendingTypeModel->id)
+            ->first();
 
-        if ($effeciveness == 2) {
-            $this->result = 'Super Effective';
-        } elseif ($effeciveness == 0.5) {
-            $this->result = 'Not Very Effective';
-        } elseif ($effeciveness == 0) {
-            $this->result = 'No Effect';
+        if ($typeEffectiveness) {
+            $this->result = $typeEffectiveness->effectiveness;
         } else {
-            $this->result = 'Normal Effectiveness';
+            $this->result = 'Type effectiveness not found';
         }
     }
 

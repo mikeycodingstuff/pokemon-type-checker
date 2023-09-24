@@ -17,7 +17,10 @@
                 id="defendingType"
             >
         </div>
-        <button class='border rounded p-2 border-slate-200' wire:click='checkTypeEffectiveness'>Check Type Effectiveness</button>
+        <button
+            class='border rounded p-2 border-slate-200'
+            wire:click='checkTypeEffectiveness'
+        >Check Type Effectiveness</button>
         <div class='mt-4'>
             <p>Type Effectiveness: {{ $result }}</p>
         </div>

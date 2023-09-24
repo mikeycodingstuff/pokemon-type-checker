@@ -31,6 +31,7 @@ class TypesSeeder extends Seeder
                     Type::updateOrInsert([
                         'name' => $name,
                         'id' => $id,
+                        'created_at' => now(),
                     ]);
                 } catch (Exception) {
                     exit();

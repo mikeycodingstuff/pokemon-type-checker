@@ -55,12 +55,14 @@ class TypeEffectivenessSeeder extends Seeder
                         'attacking_type_id' => $attackingType->id,
                         'defending_type_id' => $defendingType->id,
                         'effectiveness' => 1.0,
+                        'created_at' => now(),
                     ]);
                 } else {
                     TypeEffectiveness::updateOrInsert([
                         'attacking_type_id' => $attackingType->id,
                         'defending_type_id' => $defendingType->id,
                         'effectiveness' => $effectiveness[$damage_multiplier]['multiplier'],
+                        'created_at' => now(),
                     ]);
                 }
             }

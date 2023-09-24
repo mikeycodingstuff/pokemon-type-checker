@@ -10,35 +10,35 @@
                     attacking type:
                 </label>
                 <select
-                    class='p-1 px-2 rounded bg-indigo-50 text-center'
+                    class='p-1 px-2 rounded bg-indigo-50 text-center accent-indigo-600 cursor-pointer'
                     wire:model='attackingType'
                     id='attackingType'
                 >
                     @foreach ($types as $type)
-                        <option>{{ $type->name }}</option>
+                        <option class='cursor-pointer'>{{ $type->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class='p-2 flex justify-between'>
                 <label
-                    class='whitespace-nowrap self-center'
+                    class='whitespace-nowrap self-center '
                     for='defendingType'
                 >
                     defending type:
                 </label>
                 <select
-                    class='p-1 px-2 rounded bg-indigo-50 text-center'
+                    class='p-1 px-2 rounded bg-indigo-50 text-center accent-indigo-600 cursor-pointer'
                     wire:model='defendingType'
                     id='defendingType'
                 >
                     @foreach ($types as $type)
-                        <option>{{ $type->name }}</option>
+                        <option class='cursor-pointer'>{{ $type->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class='my-3 flex justify-center'>
                 <button
-                    class='text-indigo-50 rounded px-3 py-2 bg-indigo-500 hover:bg-indigo-600 transition-colors duration-300'
+                    class='text-indigo-50 rounded px-3 py-2 bg-indigo-500 hover:bg-indigo-600 transition-colors duration-300 accent-indigo-600'
                     wire:click='checkTypeEffectiveness'
                 >
                     check
